@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Restaurante La Delicia</title>
+    <link rel="stylesheet" href="admin.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>La Delicia Admin</h2>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="#" data-section="productsSection">Gestionar Productos</a></li>
+                    <li><a href="#" id="manageMenuButton">Gestionar Menú</a></li>
+                    <li><a href="#" data-section="reservationsSection">Ver Reservas</a></li>
+                    <button id="logoutButton">Logout</button>
+
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="admin-section" id="dashboardSection">
+                <h1 class="heading-1">Panel de Administración</h1>
+                <p>Bienvenido al panel de administración. A continuación, se muestra un resumen del estado actual del restaurante:</p>
+        
+                <!-- Estadísticas del restaurante -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3>Total Reservas</h3>
+                        <p>250</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pedidos Hoy</h3>
+                        <p>30</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Reseñas Positivas</h3>
+                        <p>125</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Platos en el Menú</h3>
+                        <p>40</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de gestión del menú, oculta inicialmente -->
+            <section id="menuManagementSection" style="display: none;">
+                <h2>Agregar/Editar Menú</h2>
+                <form id="menuForm" class="admin-form">
+                    <input type="hidden" id="menuId"> <!-- Para almacenar el ID del menú en caso de edición -->
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" required>
+            
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" required></textarea>
+            
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" required step="0.01">
+            
+                    <label for="disponible">Disponible:</label>
+                    <select id="disponible">
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+
+                    <!--<label for="categoria">categoria:</label>
+                    <input type="text" id="categoria" required>-->
+            
+                    <label for="productos_menus">Seleccionar Productos:</label>
+                    <select id="productos_menus" multiple required>
+                        <!-- Las opciones de productos se insertarán aquí con JavaScript -->
+                    </select>
+            
+                    <button type="submit">Agregar Menú</button>
+                </form>
+            
+                <!-- Sección para mostrar los menús existentes -->
+                <section id="menuListSection">
+                    <h2>Menús Existentes</h2>
+                    <div id="menuList">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Precio</th>
+                                    <th>Disponible</th>
+                                    <th>Productos</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="menuTableBody">
+                                <!-- Los menús se insertarán aquí con JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+
+            <section id="productsSection" style="display: none;">
+                <h2>Agregar/Editar Producto</h2>
+                <form id="productForm" class="admin-form">
+                    <input type="hidden" id="productId"> <!-- Para almacenar el ID del producto en caso de edición -->
+                    
+                    <label for="productName">Nombre:</label>
+                    <input type="text" id="productName" required>
+                    
+                    <label for="productDescription">Descripción:</label>
+                    <textarea id="productDescription" required></textarea>
+                    
+                    <label for="productPrice">Precio:</label>
+                    <input type="number" id="productPrice" required step="0.01">
+                    
+                    <label for="productAvailable">Disponible:</label>
+                    <select id="productAvailable">
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+                    
+                    <label for="productCategory">Categoría:</label>
+                    <input type="text" id="productCategory" required>
+                    
+                    <button type="submit">Agregar Producto</button>
+                </form>
+                
+                <!-- Tabla para mostrar los productos existentes -->
+                <section id="productListSection">
+                    <h2>Productos Existentes</h2>
+                    <div id="productList">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>Precio</th>
+                                    <th>Disponible</th>
+                                    <th>Categoría</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody">
+                                <!-- Los productos se insertarán aquí con JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>   
+
+            <section id="reservationsSection" style="display: none;">
+                <h2>Ver Reservas</h2>
+                <div class="admin-container">
+                    <!-- Tabla de reservas -->
+                    <table id="reservationsTable">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Personas</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </section>
+            
+        </main>
+    </div>
+
+    <!-- Archivo JavaScript -->
+    <script src="admin.js"></script>
+    <script src="desloguearse.js"></script>
+    <script src="mostrar_reserva.js"></script>
+    
+
+</body>
+</html>

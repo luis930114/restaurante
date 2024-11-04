@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - "5000:5000"  # Mapea el puerto 5000 del contenedor al puerto 5000 de tu máquina host
+    volumes:
+      - .:/app  # Opcional: Mapea tu directorio de trabajo al contenedor
+    environment:
+      FLASK_ENV: development  # Establece el entorno de Flask si es necesario

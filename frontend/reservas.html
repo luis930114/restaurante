@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Restaurante La Delicia</title>
+    <link rel="stylesheet" href="reservas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert -->
+</head>
+<body>
+    <header>
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="reservas.html">Reservas</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="reservation-section">
+            <div class="reservation-container">
+                <div class="reservation-form">
+                    <form id="reservationForm">
+                        <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" id="name" name="name" placeholder="Ingresa tu nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Fecha:</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Hora:</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="people">Número de personas:</label>
+                            <input type="number" id="people" name="people" min="1" placeholder="Cantidad de personas" required>
+                        </div>
+
+                        <button type="submit" class="btn">Reservar Mesa</button>
+                    </form>
+                </div>
+
+                <div class="reservation-details">
+                    <h2>¿Por qué reservar con antelación?</h2>
+                    <p>Reservar con anticipación te asegura una mesa en el horario que prefieras y evita la espera. Además, te permitirá disfrutar de una experiencia más personalizada en nuestro restaurante.</p>
+                    <p><strong>Horario de atención:</strong> Lunes a Domingo de 12:00 PM a 10:00 PM</p>
+                    <p><strong>Dirección:</strong> Calle Principal 123, Ciudad Gourmet</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" style="text-align: center; padding: 20px; background-color: #000000;">
+        <p>&copy; 2024 La Delicia. Todos los derechos reservados.</p>
+        <p>Dirección: Calle Ejemplo 123, Ciudad, País</p>
+        <p>Teléfono: +123 456 789</p>
+        <p>Email: contacto@ejemplo.com</p>
+    </footer>
+
+    <script src="reservas.js"></script> <!-- Archivo JS externo -->
+</body>
+</html>

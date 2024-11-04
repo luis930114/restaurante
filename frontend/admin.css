@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 100vh;
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sidebar-header h2 {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.sidebar-menu ul {
+    list-style-type: none;
+}
+
+.sidebar-menu ul li {
+    margin: 15px 0;
+}
+
+.sidebar-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    background-color: #444;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-menu ul li a:hover {
+    background-color: #555;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: #222;
+    padding: 40px;
+}
+
+.admin-section {
+    text-align: center;
+}
+
+.heading-1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.admin-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.admin-button {
+    padding: 15px 30px;
+    background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    font-size: 1rem;
+}
+
+.admin-button:hover {
+    background-color: #666;
+    transform: scale(1.05);
+}
+
+.dashboard-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.stat-card {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 20%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 2rem;
+    color: #00ff00;
+}
+
+.charts-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.chart {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 8px;
+    width: 45%;
+    text-align: center;
+}
+
+.chart h3 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Estilo para la sección de gestión del menú */
+#menuManagementSection {
+    padding: 20px;
+    background-color: #222; /* Fondo oscuro */
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #fff; /* Texto blanco */
+}
+
+/* Títulos de la sección */
+#menuManagementSection h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center; /* Centrar título */
+}
+
+/* Contenedor del formulario y la lista de productos */
+.admin-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Dos columnas */
+    gap: 20px; /* Espacio entre columnas */
+}
+
+/* Formulario de agregar producto */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los elementos del formulario */
+    background-color: #333; /* Fondo de formulario oscuro */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Esquinas redondeadas */
+}
+
+/* Estilo de las etiquetas del formulario */
+.admin-form label {
+    font-weight: bold;
+}
+
+/* Estilo de los inputs y textarea */
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+    padding: 10px;
+    border: 1px solid #444; /* Borde oscuro */
+    border-radius: 4px;
+    background-color: #444; /* Fondo de entrada oscuro */
+    color: #fff; /* Texto blanco */
+}
+
+/* Estilo del botón de agregar producto */
+.admin-form button {
+    padding: 10px;
+    background-color: #007BFF; /* Color azul */
+    color: #fff; /* Texto blanco */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición para el efecto hover */
+}
+
+.admin-form button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilo para la lista de productos */
+#productList {
+    margin-top: 20px;
+}
+
+/* Tarjetas de productos */
+.menu-item {
+    display: flex;
+    align-items: center;
+    background-color: #333; /* Fondo de ítem oscuro */
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Estilo de la imagen del producto */
+.menu-item img {
+    width: 60px; /* Tamaño de la imagen */
+    height: 60px;
+    margin-right: 15px; /* Espacio entre la imagen y el texto */
+    border-radius: 4px; /* Esquinas redondeadas */
+}
+
+/* Estilo del nombre del producto */
+.menu-item h3 {
+    margin: 0; /* Sin margen */
+    font-size: 1.2em;
+}
+
+/* Estilo de la descripción del producto */
+.menu-item p {
+    margin: 5px 0; /* Margen para el texto */
+}
+
+/* Estilo del precio */
+.menu-item span {
+    font-weight: bold; /* Negrita para el precio */
+}
+
+/* Botones de editar y eliminar */
+.menu-item button {
+    background-color: #28a745; /* Color verde para editar */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px; /* Espacio entre los botones */
+}
+
+.menu-item button:hover {
+    background-color: #218838; /* Color más oscuro al pasar el ratón */
+}
+
+.menu-item button:nth-child(2) {
+    background-color: #dc3545; /* Color rojo para eliminar */
+}
+
+.menu-item button:nth-child(2):hover {
+    background-color: #c82333; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilo para la sección de ver reservas */
+#reservationsSection {
+    padding: 20px;
+    background-color: #222; /* Fondo oscuro */
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #fff; /* Texto blanco */
+}
+
+/* Títulos de la sección */
+#reservationsSection h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center; /* Centrar título */
+}
+
+/* Estilo para la tabla de reservas */
+#reservationsTable {
+    width: 750px;/* 100% */
+    border-collapse: collapse; /* Unir bordes de la tabla */
+}
+
+#reservationsTable th, 
+#reservationsTable td {
+    padding: 10px;
+    text-align: left; /* Alinear texto a la izquierda */
+    border: 1px solid #444; /* Borde oscuro */
+}
+
+#reservationsTable th {
+    background-color: #333; /* Fondo oscuro para encabezados */
+    color: #fff; /* Texto blanco */
+}
+
+#reservationsTable tr:nth-child(even) {
+    background-color: #2a2a2a; /* Color de fondo para filas pares */
+}
+
+#reservationsTable tr:hover {
+    background-color: #444; /* Color al pasar el mouse */
+}
+
+/* Estilo para los botones de acciones */
+.edit-reservation,
+.delete-reservation {
+    background-color: #007BFF; /* Color azul */
+    color: #fff; /* Texto blanco */
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px; /* Espacio entre botones */
+}
+
+.edit-reservation:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+}
+
+.delete-reservation {
+    background-color: #dc3545; /* Color rojo */
+}
+
+.delete-reservation:hover {
+    background-color: #c82333; /* Color más oscuro al pasar el ratón */
+}
+
+
+/* Estilos para la sección de "Ver Reservas" */
+#reservationsSection {
+    padding: 40px;
+    background-color: #393030; /* Color de fondo suave */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 900px; /* Ancho máximo de la sección */
+    margin: 0 auto; /* Centrar la sección */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff; /* Color del texto */
+    text-align: center; /* Centrar el título */
+}
+
+.admin-container {
+    overflow-x: auto; /* Permitir desplazamiento horizontal */
+}
+
+table {
+    width: 100%; /* Ancho completo */
+    width: 900px;
+    /*max-width: 900px; /* Ancho máximo de la tabla */
+    border-collapse: collapse; /* Eliminar espacio entre celdas */
+    margin: 20px auto; /* Espacio superior e inferior, centrar horizontalmente */
+    font-size: 16px; /* Tamaño de fuente más grande */
+}
+
+th, td {
+    padding: 16px; /* Espaciado interno más grande */
+    text-align: left; /* Alinear a la izquierda */
+    border-bottom: 1px solid #ddd; /* Línea debajo de las filas */
+}
+
+th {
+    background-color: #007bff; /* Color de fondo del encabezado */
+    color: #fff; /* Color del texto del encabezado */
+    font-weight: bold; /* Texto en negrita */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Fondo claro al pasar el ratón */
+}
+
+button {
+    background-color: #28a745; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s; /* Efecto de transición */
+}
+
+button:hover {
+    background-color: #218838; /* Color del botón al pasar el ratón */
+}
+
+@media (max-width: 600px) {
+    table {
+        font-size: 14px; /* Ajustar tamaño de fuente en pantallas pequeñas */
+    }
+}
