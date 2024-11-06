@@ -62,7 +62,6 @@ def load_user(user_id):
 @routes_bp.route('/guardar_reserva', methods=['POST'])
 def crear_reserva():
     datos = request.get_json()
-    print(datos)
 
     # Validar que todos los campos necesarios estén en los datos
     if not all(key in datos for key in ("name", "date", "time", "people", "usuario_id")):
@@ -105,5 +104,79 @@ def listar_reservas():
         for reserva in reservas
     ]
     return jsonify(reservas_lista), 200
+
+
+@routes_bp.route('/reservas/<int:id>', methods=['PUT'])
+def actualizar_reserva(id):
+    datos = request.get_json()
+    print(datos)
+    # Validar que los campos a actualizar están en los datos
+    if not all(key in datos for key in ("name", "date", "time", "people")):
+        return jsonify({"error": "Faltan datos necesarios para actualizar la reserva"}), 400
+
+    try:
+        reserva = Reserva.query.get(id)
+        if reserva is None:
+            return jsonify({"error": "Reserva no encontrada"}), 404
+
+        reserva.nombre_usuario = datos['name']
+        reserva.fecha_reserva = datetime.strptime(datos['date'], '%Y-%m-%d').date()
+        
+        # Ajustar el formato de la hora según si tiene o no segundos
+        time_str = datos['time']
+        
+        # Si la hora tiene solo "HH:MM", agregar ":00" para completar "HH:MM:SS"
+        if len(time_str) == 5:  # Solo "HH:MM"
+            time_str += ":00"
+
+        # Parsear el string de hora con formato "HH:MM:SS"
+        reserva.hora_reserva = datetime.strptime(time_str, '%H:%M:%S').time()
+        reserva.num_personas = datos['people']
+        reserva.estado = datos.get('estado', reserva.estado)  # Actualizar estado si se proporciona
+
+        db.session.commit()
+        return jsonify({"mensaje": "Reserva actualizada exitosamente"}), 200
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"Error al actualizar la reserva: {str(e)}"}), 500
+
+
+@routes_bp.route('/reservas/<int:id>', methods=['DELETE'])
+def eliminar_reserva(id):
+    try:
+        reserva = Reserva.query.get(id)
+        if reserva is None:
+            return jsonify({"error": "Reserva no encontrada"}), 404
+
+        db.session.delete(reserva)
+        db.session.commit()
+        return jsonify({"mensaje": "Reserva eliminada exitosamente"}), 200
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"Error al eliminar la reserva: {str(e)}"}), 500
+
+
+@routes_bp.route('/reservas/<int:reserva_id>', methods=['GET'])
+def get_reserva(reserva_id):
+    # Busca la reserva por ID
+    reserva = Reserva.query.get(reserva_id)
+    
+    if reserva is None:
+        abort(404, description="Reserva no encontrada")
+
+    result = {
+        'id': reserva.id,
+        'nombre': reserva.nombre_usuario,
+        'fecha_reserva': reserva.fecha_reserva.isoformat(),
+        'hora_reserva': reserva.hora_reserva.strftime('%H:%M:%S'),
+        'numero_personas': reserva.num_personas,
+        'usuario_id': reserva.usuario_id
+    }
+    
+    return jsonify(result), 200
+
+
 
 

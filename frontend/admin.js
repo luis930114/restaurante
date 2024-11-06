@@ -345,12 +345,12 @@ async function deleteMenu(id) {
             method: 'DELETE'
         });
 
-        const result = await response.text();
+        const result = await response.json();
 
         if (response.ok) {
             Swal.fire({
                 title: 'Éxito',
-                text: result.message,
+                text: result.mensaje,
                 icon: 'success'
             });
             loadMenus();
@@ -517,13 +517,13 @@ async function eliminarProducto(id) {
             method: 'DELETE'
         });
         
-        const result = await response.text();
+        const result = await response.json();
         
         if (response.ok) {
             cargarProductos();
             Swal.fire({
                 title: 'Éxito',
-                text: result.message,
+                text: result.mensaje,
                 icon: 'success'
             });
         } else {
